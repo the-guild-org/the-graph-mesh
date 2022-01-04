@@ -6,17 +6,22 @@ sources:
         batch: false
 
     transforms:
+      - prefix:
+          value: NFT_
+          includeRootOperations: true
+          ignore:
+            - _SubgraphErrorPolicy_
       # Rename Account to User to apply Type Merging
       - rename:
           - from:
-              type: Account
+              type: NFT_Account
             to:
               type: User
       # Teach Type Merging how to resolve this entity
       - typeMerging:
           queryFields:
             # With batching
-            - queryFieldName: accounts
+            - queryFieldName: NFT_accounts
               keyField: id
               keyArg: 'where.id_in'
 
@@ -26,16 +31,21 @@ sources:
         endpoint: https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2
         batch: false
     transforms:
+      - prefix:
+          value: UNI_
+          includeRootOperations: true
+          ignore:
+            - _SubgraphErrorPolicy_
+            - User # Keep User as-is because we need it for Type Merging
       - typeMerging:
           queryFields:
             # Without batching
-            - queryFieldName: user
+            - queryFieldName: UNI_user
               keyField: id
               keyArg: id
 
 documents:
   - ./operations/**/*.graphql
-  
 
 serve:
   browser: false
