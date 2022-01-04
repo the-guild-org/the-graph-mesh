@@ -1,0 +1,18 @@
+diff --git a/node_modules/@graphql-mesh/graphql/index.js b/node_modules/@graphql-mesh/graphql/index.js
+index c0f954b..0f39b89 100644
+--- a/node_modules/@graphql-mesh/graphql/index.js
++++ b/node_modules/@graphql-mesh/graphql/index.js
+@@ -482,7 +482,12 @@ class GraphQLHandler {
+             schema: nonExecutableSchema,
+             executor: async (params) => {
+                 const executor = await getExecutorForParams(params, operationHeadersFactory, endpointFactory);
+-                return executor(params);
++                params.document.definitions[0].selectionSet.selections = params.document.definitions[0].selectionSet.selections.filter(selection => selection?.name?.value !== '__typename')
++                const result = await executor(params);
++                if (result.data) {
++                    result.data.__typename = 'Query';
++                }
++                return result;
+             },
+             batch: 'batch' in this.config ? this.config.batch : true,
+         };
