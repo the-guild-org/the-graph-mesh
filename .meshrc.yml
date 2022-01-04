@@ -6,11 +6,13 @@ sources:
         batch: false
 
     transforms:
+      # Rename Account to User to apply Type Merging
       - rename:
           - from:
               type: Account
             to:
               type: User
+      # Teach Type Merging how to resolve this entity
       - typeMerging:
           queryFields:
             # With batching
