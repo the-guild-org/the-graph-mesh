@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "postinstall": "patch-package",
-    "start": "yarn mesh dev"
+    "build": "yarn mesh build",
+    "start": "yarn mesh start",
+    "dev": "yarn mesh dev"
   },
   "dependencies": {
     "@graphql-mesh/cli": "0.44.5",
