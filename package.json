@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "patch-package",
+    "prestart": "yarn postinstall",
     "build": "yarn mesh build",
     "start": "yarn mesh start",
     "dev": "yarn mesh dev"
