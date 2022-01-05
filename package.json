@@ -9,11 +9,11 @@
     "dev": "yarn mesh dev"
   },
   "dependencies": {
-    "@graphql-mesh/cli": "0.44.5",
-    "@graphql-mesh/graphql": "0.20.5",
-    "@graphql-mesh/transform-prefix": "0.9.5",
-    "@graphql-mesh/transform-rename": "0.11.1",
-    "@graphql-mesh/transform-type-merging": "0.3.5",
+    "@graphql-mesh/cli": "0.45.0",
+    "@graphql-mesh/graphql": "0.20.10",
+    "@graphql-mesh/transform-prefix": "0.9.6",
+    "@graphql-mesh/transform-rename": "0.11.6",
+    "@graphql-mesh/transform-type-merging": "0.3.6",
     "graphql": "16.2.0",
     "patch-package": "6.4.7"
   },

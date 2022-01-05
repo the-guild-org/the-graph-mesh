@@ -49,3 +49,4 @@ documents:
 
 serve:
   browser: false
+  playground: true
